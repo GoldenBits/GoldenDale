@@ -1,16 +1,10 @@
-cmake_minimum_required(VERSION 3.9.4)
+cmake_minimum_required(VERSION 3.2.2)
 
 project(GoldenDale)
 
-set(GoldenDale-SRCS main.cpp)
-
+add_subdirectory(client)
 add_subdirectory(test)
+add_subdirectory(lib)
 
-find_package(Qt5 REQUIRED
-        Core
-        Widgets
-        )
 
-add_executable(GoldenDale ${GoldenDale-SRCS})
 
-target_link_libraries(GoldenDale Qt5::Widgets Qt5::Core)
