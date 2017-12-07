@@ -30,3 +30,9 @@
 *.exe
 *.out
 *.app
+
+cmake-build-release
+.idea
+CMakeLists.txt.user
+client/stb/
+

@@ -1,16 +1,13 @@
 project(GoldenDaleClient)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR} )
 
 find_package(OpenGL REQUIRED)
-if(OPENGL_FOUND)
-    include_directories(${OPENGL_INCLUDE_DIR})
-    link_libraries(${OPENGL_gl_LIBRARY})
-endif()
+include_directories(${OPENGL_INCLUDE_DIR})
+link_libraries(${OPENGL_gl_LIBRARY})
 
 find_package(GLEW REQUIRED)
-if(GLEW_FOUND)
-    include_directories(${GLEW_INCLUDE_DIRS})
-    link_libraries(${GLEW_LIBRARIES})
-endif()
+include_directories(${GLEW_INCLUDE_DIRS})
+link_libraries(${GLEW_LIBRARIES})
 
 find_package(glfw3 3.2.1 REQUIRED)
 include_directories(${GLFW_INCLUDE_DIRS})
@@ -20,6 +17,35 @@ set(GLFW_BUILD_DOCS OFF CACHE BOOL "" FORCE)
 set(GLFW_BUILD_TESTS OFF CACHE BOOL "" FORCE)
 set(GLFW_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
 
-set(GoldenDale-SRCS main.cpp)
+set(GoldenDale-SRCS
+        RectangleItem.cpp
+        render/RenderData.cpp
+        render/RenderItem.cpp
+        render/shader/ShaderProgram.cpp
+        render/shader/shader.cpp
+        render/vertex/Vertex.cpp
+        render/vertex/VertexArrayObject.cpp
+        render/vertex/buffer/ElementBufferObject.cpp
+        render/vertex/buffer/VertexBufferObject.cpp
+        window/MainWindow.cpp
+        main.cpp
+        )
 
-add_executable(GoldenDale ${GoldenDale-SRCS})
+set(GoldenDale-HEADERS
+        RectangleItem.h
+        StdInc.h
+        render/RenderData.h
+        render/RenderItem.h
+        render/shader/ShaderProgram.h
+        render/shader/ShaderType.h
+        render/shader/shader.h
+        render/vertex/Vertex.h
+        render/vertex/VertexArrayObject.h
+        render/vertex/buffer/ElementBufferObject.h
+        render/vertex/buffer/VertexBufferObject.h
+        window/MainWindow.h
+        window/Window.h
+        render/Texture.cpp)
+
+add_executable(GoldenDale ${GoldenDale-SRCS} ${GoldenDale-HEADERS})
+target_link_libraries(GoldenDale golden ${Boost_LIBRARIES})
