@@ -1,0 +1,9 @@
+{
+  "ShaderPaths": {
+    "VERTEX_SHADER": "resources/shaders/vertexShader.glsl",
+    "FRAGMENT_SHADER": "resources/shaders/fragmentShader.glsl"
+  },
+  "ImagesPaths": {
+    "MAIN_MENU_BACKGROUND": "/home/michal/Pobrane/h3menu.jpg"
+  }
+}

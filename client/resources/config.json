@@ -1,0 +1,34 @@
+{
+  "Images": {
+    "IMAGES_DIR": "../images",
+    "MAIN_MENU_BACKGROUND": "backgrounds/mainMenu.png",
+    "DEFAULT_DIALOG_BACKGROUND": "backgrounds/dialog.png",
+    "FLAG": "flaga.png"
+  },
+  "Common": {
+    "WIDTH": 800,
+    "HEIGHT": 600,
+    "FULLSCREEN": false,
+    "LUCKY": 1.245
+  },
+  "Authors": [
+    {
+      "name": "Michal Kalinowski",
+      "description": "Fajny gosc",
+      "tablica": [
+        {
+          "wartosc": 1
+        }
+      ]
+    },
+    {
+      "name": "Maciej Kalinowski",
+      "description": "Blabla",
+      "tablica": [
+        {
+          "wartosc": 3
+        }
+      ]
+    }
+  ]
+}

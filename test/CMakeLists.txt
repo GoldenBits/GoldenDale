@@ -18,8 +18,9 @@ set(test_HEADERS
         )
 set(test_SOURCES
         main.cpp
-        )
+        RectangleAreaTest.cpp
+        PointTest.cpp battle/HexGrid.cpp mock/battle/Area.h)
 
 add_executable(GoldenDaleTest ${test_SOURCES} ${test_HEADERS} ${mock_HEADERS} ${GTestSrc}/src/gtest-all.cc ${GMockSrc}/src/gmock-all.cc)
 
-target_link_libraries(GoldenDaleTest pthread)
+target_link_libraries(GoldenDaleTest golden pthread)
