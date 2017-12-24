@@ -1,6 +1,10 @@
 #include "StdInc.h"
 
 #include <render/Texture.h>
+#include <iostream>
+#include <fstream>
+#include "ConstLoader.h"
+
 #include "RectangleItem.h"
 #include "window/MainWindow.h"
 
@@ -13,20 +17,22 @@ void initGlfwInfo(){
 
 int main(int argc,char **argv)
 {
+	gen::ConstLoader::load();
+
 	initGlfwInfo();
 
-	auto mainWindow = new MainWindow(glfwCreateWindow(800, 600, "MainWindow", nullptr, nullptr));
+	auto mainWindow = new MainWindow(glfwCreateWindow(800, 600, gen::Strings::Title.c_str(), nullptr, nullptr));
 	glewInit();
 
-	Shader vertexShader("/home/michal/Projects/GoldenDale/client/render/shader/vertexShader.glsl", ShaderType::VERTEX_SHADER);
-	Shader fragmentShader("/home/michal/Projects/GoldenDale/client/render/shader/fragmentShader.glsl", ShaderType::FRAGMENT_SHADER);
+	Shader vertexShader(gen::RenderConst::ShaderPaths::VERTEX_SHADER.c_str(), ShaderType::VERTEX_SHADER);
+	Shader fragmentShader(gen::RenderConst::ShaderPaths::FRAGMENT_SHADER.c_str(), ShaderType::FRAGMENT_SHADER);
 	ShaderProgram shaderProgram;
 	shaderProgram.attachShader(&vertexShader);
 	shaderProgram.attachShader(&fragmentShader);
 	shaderProgram.linkProgram();
 	auto * item = new RectangleItem(800,600);
 	item->setShaderProgram(&shaderProgram);
-	item->texture->setImage("/home/michal/Pobrane/h3menu.jpg");
+	item->texture->setImage(gen::RenderConst::ImagesPaths::MAIN_MENU_BACKGROUND);
 
 	while (!glfwWindowShouldClose(mainWindow->getWindowDirector()))
 	{
